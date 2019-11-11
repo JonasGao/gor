@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/sun8911879/shadowsocksR"
+	shadowsocksr "github.com/sun8911879/shadowsocksR"
 	"github.com/sun8911879/shadowsocksR/tools/leakybuf"
 	"github.com/sun8911879/shadowsocksR/tools/socks"
 )
@@ -41,15 +41,15 @@ type BackendInfo struct {
 
 func main() {
 	bi := &BackendInfo{
-		Address: "www.domain.com:445",
+		Address: "cn1.darkcloudpiece.com:xxx",
 		Type:    "ssr",
 		SSInfo: SSInfo{
-			EncryptMethod:   "aes-128-cfb",
-			EncryptPassword: "password",
+			EncryptMethod:   "aes-256-cfb",
+			EncryptPassword: "---",
 			SSRInfo: SSRInfo{
 				Protocol:      "auth_aes128_sha1",
 				ProtocolParam: "",
-				Obfs:          "tls1.2_ticket_auth",
+				Obfs:          "http_post",
 				ObfsParam:     "",
 			},
 		},
@@ -57,13 +57,16 @@ func main() {
 	bi.Listen()
 }
 
+// Listen target tcp
 func (bi *BackendInfo) Listen() {
 	listener, err := net.Listen("tcp", "0.0.0.0:2515")
+	fmt.Println("Listening 2515")
 	if err != nil {
 		panic(err)
 	}
 	for {
 		localConn, err := listener.Accept()
+		fmt.Println("accepting")
 		if err != nil {
 			continue
 		}
@@ -71,6 +74,7 @@ func (bi *BackendInfo) Listen() {
 	}
 }
 
+// Handle connection
 func (bi *BackendInfo) Handle(src net.Conn) {
 	//直接访问google
 	rawaddr := socks.ParseAddr("www.google.com.hk:443")
@@ -85,6 +89,7 @@ func (bi *BackendInfo) Handle(src net.Conn) {
 	dst.Close()
 }
 
+// DialSSRConn do addr
 func (bi *BackendInfo) DialSSRConn(rawaddr socks.Addr) (net.Conn, error) {
 	u := &url.URL{
 		Scheme: bi.Type,
@@ -121,7 +126,7 @@ func (bi *BackendInfo) DialSSRConn(rawaddr socks.Addr) (net.Conn, error) {
 	return ssrconn, nil
 }
 
-// PipeThenClose copies data from src to dst, closes dst when done.
+// Pipe ThenClose copies data from src to dst, closes dst when done.
 func (bi *BackendInfo) Pipe(src, dst net.Conn) error {
 	buf := leakybuf.GlobalLeakyBuf.Get()
 	for {
