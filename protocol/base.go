@@ -3,7 +3,7 @@ package protocol
 import (
 	"strings"
 
-	"github.com/jonas/shadowsocksr/ssr"
+	"github.com/jonasgao/shadowsocksr-go/ssr"
 )
 
 type creator func() IProtocol

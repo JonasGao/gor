@@ -5,8 +5,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/jonas/shadowsocksr/ssr"
-	"github.com/jonas/shadowsocksr/tools"
+	"github.com/jonasgao/shadowsocksr-go/ssr"
+	"github.com/jonasgao/shadowsocksr-go/tools"
 )
 
 func init() {

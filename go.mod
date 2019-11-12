@@ -1,4 +1,4 @@
-module github.com/jonas/shadowsocksr
+module github.com/jonasgao/shadowsocksr-go
 
 go 1.13
 
