@@ -1,4 +1,4 @@
-package shadowsocksr
+package gor
 
 import (
 	"errors"
@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jonasgao/shadowsocksr-go/obfs"
-	"github.com/jonasgao/shadowsocksr-go/protocol"
-	"github.com/jonasgao/shadowsocksr-go/ssr"
+	"github.com/jonasgao/gor/obfs"
+	"github.com/jonasgao/gor/protocol"
+	"github.com/jonasgao/gor/ssr"
 )
 
 func NewSSRClient(u *url.URL) (*SSTCPConn, error) {

@@ -1,4 +1,4 @@
-package shadowsocksr
+package gor
 
 import (
 	"bytes"
@@ -6,9 +6,9 @@ import (
 	"net"
 	"sync"
 
-	"github.com/jonasgao/shadowsocksr-go/obfs"
-	"github.com/jonasgao/shadowsocksr-go/protocol"
-	"github.com/jonasgao/shadowsocksr-go/tools/leakybuf"
+	"github.com/jonasgao/gor/obfs"
+	"github.com/jonasgao/gor/protocol"
+	"github.com/jonasgao/gor/tools/leakybuf"
 )
 
 // SSTCPConn the struct that override the net.Conn methods

@@ -1,4 +1,4 @@
-package shadowsocksr
+package gor
 
 import (
 	"crypto/rand"
@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/jonasgao/shadowsocksr-go/tools"
+	"github.com/jonasgao/gor/tools"
 )
 
 const text = "Don't tell me the moon is shining; show me the glint of light on broken glass."

@@ -1,4 +1,4 @@
-package shadowsocksr
+package gor
 
 import (
 	"crypto/aes"
@@ -10,8 +10,8 @@ import (
 	"encoding/binary"
 	"errors"
 
-	"github.com/jonasgao/shadowsocksr-go/tools"
-	"github.com/jonasgao/shadowsocksr-go/tools/leakybuf"
+	"github.com/jonasgao/gor/tools"
+	"github.com/jonasgao/gor/tools/leakybuf"
 
 	camellia "github.com/dgryski/go-camellia"
 	idea "github.com/dgryski/go-idea"
